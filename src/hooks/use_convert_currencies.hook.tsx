@@ -34,7 +34,7 @@ export const useConvertCurrencies = () => {
     }
 
     const { data } = await currenciesClient.get("v1/convert", {
-      params: { from, to, amount, callback: "callback" },
+      params: { from, to, amount },
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
