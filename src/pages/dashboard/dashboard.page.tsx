@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { DashboardLayout, CurrencyConverter, CurrencyActions } from "./components";
+import {
+  DashboardLayout,
+  CurrencyConverter,
+  CurrencyActions,
+} from "./components";
 import type { CurrencyType } from "./types";
 
 // TODO: Add error handling and loading states for better user experience.

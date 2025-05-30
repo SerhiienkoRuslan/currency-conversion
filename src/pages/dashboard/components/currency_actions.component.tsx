@@ -11,7 +11,10 @@ interface CurrencyActionsProps {
 }
 
 // TODO: Add error handling and loading states for better user experience.
-export const CurrencyActions = ({ convert, setConvert }: CurrencyActionsProps) => {
+export const CurrencyActions = ({
+  convert,
+  setConvert,
+}: CurrencyActionsProps) => {
   const { convertCurrencies } = useConvertCurrencies();
 
   const { mutate: handleConvertCurrencie, isPending } = useMutation({
@@ -41,7 +44,12 @@ export const CurrencyActions = ({ convert, setConvert }: CurrencyActionsProps) =
   }, [convert, convertCurrencies]);
 
   return (
-    <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!convert.from || !convert.to || !convert.amount || isPending}>
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleSubmit}
+      disabled={!convert.from || !convert.to || !convert.amount || isPending}
+    >
       Convert
     </Button>
   );
