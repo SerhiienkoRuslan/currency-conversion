@@ -16,7 +16,6 @@ interface Props {
   }) => void;
 }
 
-// TODO: Add validation for amount input to ensure it is a valid number and handle edge cases like negative values or non-numeric input.
 export const CurrencyConverter: React.FC<Props> = ({
   label,
   selectName,
@@ -37,8 +36,18 @@ export const CurrencyConverter: React.FC<Props> = ({
   };
 
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (selectName === "from") {
-      handleSetConvert({ name: "amount", value: event.target.value });
+    const inputValue = event.target.value;
+
+    // Allow empty input for user convenience
+    if (inputValue === "") {
+      handleSetConvert({ name: "amount", value: "" });
+      return;
+    }
+
+    const number = Number(inputValue);
+
+    if (!isNaN(number) && number >= 0) {
+      handleSetConvert({ name: "amount", value: inputValue });
     }
   };
 

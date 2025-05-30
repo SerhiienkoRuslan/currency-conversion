@@ -5,6 +5,8 @@ interface PropsType {
   value: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  helperText?: string;
+  hasError?: boolean;
 }
 
 export const NumberField = ({
@@ -12,10 +14,12 @@ export const NumberField = ({
   value,
   onChange,
   disabled = false,
+  helperText,
+  hasError = false,
 }: PropsType) => (
   <InputField
     label={label}
-    value={value ? Number((+value).toFixed(3)) : ""}
+    value={value}
     type="number"
     onChange={onChange}
     disabled={disabled}
@@ -30,5 +34,7 @@ export const NumberField = ({
         transform: "translate(14px, -9px) scale(0.75)",
       },
     }}
+    helperText={helperText}
+    error={hasError}
   />
 );
