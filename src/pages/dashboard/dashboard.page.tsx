@@ -5,6 +5,8 @@ import { Button } from "@mui/material";
 import { DashboardLayout, CurrencyConverter } from "./components";
 import { useConvertCurrencies } from "../../hooks";
 
+// TODO: Add error handling and loading states for better user experience.
+// TODO: validate input values before making the conversion request.
 export const Dashboard: React.FC = () => {
   const { convertCurrencies } = useConvertCurrencies();
   const [convert, setConvert] = useState<{
