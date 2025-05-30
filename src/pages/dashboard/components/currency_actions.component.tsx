@@ -14,7 +14,7 @@ interface CurrencyActionsProps {
 export const CurrencyActions = ({ convert, setConvert }: CurrencyActionsProps) => {
   const { convertCurrencies } = useConvertCurrencies();
 
-  const { mutate: handleConvertCurrencies } = useMutation({
+  const { mutate: handleConvertCurrencie, isPending } = useMutation({
     mutationFn: convertCurrencies,
     onSuccess: (data) => {
       setConvert((prev: CurrencyType) => ({
@@ -30,7 +30,7 @@ export const CurrencyActions = ({ convert, setConvert }: CurrencyActionsProps) =
       return;
     }
     try {
-      await handleConvertCurrencies({
+      await handleConvertCurrencie({
         from: convert.from,
         to: convert.to,
         amount: convert.amount,
@@ -41,8 +41,8 @@ export const CurrencyActions = ({ convert, setConvert }: CurrencyActionsProps) =
   }, [convert, convertCurrencies]);
 
   return (
-    <Button variant="contained" color="primary" onClick={handleSubmit}>
-        Convert
+    <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!convert.from || !convert.to || !convert.amount || isPending}>
+      Convert
     </Button>
   );
 };
