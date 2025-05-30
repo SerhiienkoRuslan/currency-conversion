@@ -12,11 +12,13 @@ Currently, two official plugins are available:
 # Currency Conversion Project
 
 ## Overview
+
 This project is a currency conversion application built with React, TypeScript, and Vite. It uses Material-UI for styling, Axios for API requests, and React Query for state management.
 
 ---
 
 ## Features
+
 - **Currency Conversion**: Fetch and display currency data from an external API.
 - **Material-UI Integration**: Styled components with a custom theme.
 - **React Query**: Efficient data fetching and caching.
@@ -26,6 +28,7 @@ This project is a currency conversion application built with React, TypeScript, 
 ---
 
 ## Project Structure
+
 The project follows a modular structure for scalability and maintainability:
 
 ```
@@ -49,10 +52,12 @@ The project follows a modular structure for scalability and maintainability:
 ## Getting Started
 
 ### 1. Prerequisites
+
 - Node.js (v16 or later)
 - npm (v7 or later)
 
 ### 2. Installation
+
 Clone the repository and install dependencies:
 
 ```bash
@@ -62,6 +67,7 @@ npm install
 ```
 
 ### 3. Environment Variables
+
 Create a `.env` file in the root directory and add the following variables:
 
 ```env
@@ -69,6 +75,7 @@ VITE_CURRENCYBEACON_API_KEY=your_currency_api_key
 ```
 
 ### 4. Run the Development Server
+
 Start the Vite development server:
 
 ```bash
@@ -81,18 +88,19 @@ The app will be available at [http://localhost:5173](http://localhost:5173).
 
 ## Scripts
 
-| Command             | Description                                   |
-|---------------------|-----------------------------------------------|
-| `npm run dev`       | Start the development server with Vite.       |
-| `npm run build`     | Build the project for production.             |
-| `npm run preview`   | Preview the production build.                |
-| `npm run lint`      | Run ESLint to check for code issues.          |
-| `npm run format`    | Format the codebase using Prettier.           |
+| Command                | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `npm run dev`          | Start the development server with Vite.   |
+| `npm run build`        | Build the project for production.         |
+| `npm run preview`      | Preview the production build.             |
+| `npm run lint`         | Run ESLint to check for code issues.      |
+| `npm run format`       | Format the codebase using Prettier.       |
 | `npm run format-check` | Check if the code is formatted correctly. |
 
 ---
 
 ## Key Technologies
+
 - **React**: Frontend library for building user interfaces.
 - **TypeScript**: Strongly typed JavaScript for better code quality.
 - **Vite**: Fast development server and build tool.
@@ -105,6 +113,7 @@ The app will be available at [http://localhost:5173](http://localhost:5173).
 ## Custom Hooks
 
 ### `useFetchCurrencies`
+
 Fetches currency data from the API.
 
 ```tsx
@@ -114,11 +123,13 @@ const { currenciesList, isLoading } = useFetchCurrencies();
 ---
 
 ## Styling
+
 The project uses Material-UI for styling with a custom theme. The theme is defined in `src/theme/theme.ts` and applied globally using `ThemeProvider`.
 
 ---
 
 ## Contributing
+
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature-name`.
 3. Commit your changes: `git commit -m "Add feature"`.
@@ -128,4 +139,5 @@ The project uses Material-UI for styling with a custom theme. The theme is defin
 ---
 
 ## License
+
 This project is licensed under the MIT License.

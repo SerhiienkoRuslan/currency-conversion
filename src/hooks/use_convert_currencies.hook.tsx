@@ -22,7 +22,11 @@ type ConvertInput = {
 export const useConvertCurrencies = () => {
   const currenciesClient = useApiClient(ApiClientService.CURRENCY);
 
-  const convertCurrencies = async ({ from, to, amount }: ConvertInput): Promise<ConvertCurrencyResponse> => {
+  const convertCurrencies = async ({
+    from,
+    to,
+    amount,
+  }: ConvertInput): Promise<ConvertCurrencyResponse> => {
     const apiKey = import.meta.env.VITE_CURRENCYBEACON_API_KEY;
 
     if (!apiKey) {

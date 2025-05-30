@@ -24,7 +24,6 @@ export const components = {
           boxShadow: "3px 3px 1px rgba(36,36,36,0.9)",
         },
       },
-      
     },
   },
   MuiSelect: {

@@ -10,7 +10,10 @@ interface Props {
   selectName: "from" | "to";
   selectedValue: string;
   amount: string;
-  handleSetConvert: (params: { name: "from" | "to" | "amount"; value: string }) => void;
+  handleSetConvert: (params: {
+    name: "from" | "to" | "amount";
+    value: string;
+  }) => void;
 }
 
 // TODO: Add validation for amount input to ensure it is a valid number and handle edge cases like negative values or non-numeric input.
@@ -24,7 +27,9 @@ export const CurrencyConverter: React.FC<Props> = ({
   const { currenciesList, isCurrenciesListLoading } = useContext(GlobalContext);
 
   const options = useMemo(() => {
-    return isCurrenciesListLoading ? [] : currenciesList.map((currency) => currency.name);
+    return isCurrenciesListLoading
+      ? []
+      : currenciesList.map((currency) => currency.name);
   }, [currenciesList, isCurrenciesListLoading]);
 
   const handleCurrencyChange = (event: SelectChangeEvent) => {

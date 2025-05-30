@@ -7,7 +7,12 @@ import { useConvertCurrencies } from "../../hooks";
 
 export const Dashboard: React.FC = () => {
   const { convertCurrencies } = useConvertCurrencies();
-  const [convert, setConvert] = useState<{ from: string; to: string; amount: string, result: string  }>({
+  const [convert, setConvert] = useState<{
+    from: string;
+    to: string;
+    amount: string;
+    result: string;
+  }>({
     from: "",
     to: "",
     amount: "0",

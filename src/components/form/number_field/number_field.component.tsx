@@ -7,7 +7,12 @@ interface PropsType {
   disabled?: boolean;
 }
 
-export const NumberField = ({ label, value, onChange, disabled = false }: PropsType) => (
+export const NumberField = ({
+  label,
+  value,
+  onChange,
+  disabled = false,
+}: PropsType) => (
   <InputField
     label={label}
     value={value ? Number((+value).toFixed(3)) : ""}
