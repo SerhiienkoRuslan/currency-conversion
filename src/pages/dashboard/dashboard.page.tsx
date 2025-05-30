@@ -1,34 +1,15 @@
-import React, { useCallback, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { Button } from "@mui/material";
-
-import { DashboardLayout, CurrencyConverter } from "./components";
-import { useConvertCurrencies } from "../../hooks";
+import React, { useState } from "react";
+import { DashboardLayout, CurrencyConverter, CurrencyActions } from "./components";
+import type { CurrencyType } from "./types";
 
 // TODO: Add error handling and loading states for better user experience.
 // TODO: validate input values before making the conversion request.
 export const Dashboard: React.FC = () => {
-  const { convertCurrencies } = useConvertCurrencies();
-  const [convert, setConvert] = useState<{
-    from: string;
-    to: string;
-    amount: string;
-    result: string;
-  }>({
+  const [convert, setConvert] = useState<CurrencyType>({
     from: "",
     to: "",
     amount: "0",
     result: "0",
-  });
-
-  const { mutate: handleConvertCurrencies } = useMutation({
-    mutationFn: convertCurrencies,
-    onSuccess: (data) => {
-      setConvert((prev) => ({
-        ...prev,
-        result: data.result.toString(),
-      }));
-    },
   });
 
   const handleSetConvert = ({
@@ -43,22 +24,6 @@ export const Dashboard: React.FC = () => {
       [name]: value,
     }));
   };
-
-  const handleSubmit = useCallback(async () => {
-    if (!convert.from || !convert.to || !convert.amount) {
-      console.error("Please fill in all fields before converting.");
-      return;
-    }
-    try {
-      await handleConvertCurrencies({
-        from: convert.from,
-        to: convert.to,
-        amount: convert.amount,
-      });
-    } catch (error) {
-      console.error("Error converting currencies:", error);
-    }
-  }, [convert, convertCurrencies]);
 
   return (
     <DashboardLayout>
@@ -76,9 +41,7 @@ export const Dashboard: React.FC = () => {
         amount={convert.result}
         handleSetConvert={handleSetConvert}
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
-        Convert
-      </Button>
+      <CurrencyActions convert={convert} setConvert={setConvert} />
     </DashboardLayout>
   );
 };
