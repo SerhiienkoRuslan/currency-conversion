@@ -4,3 +4,5 @@ export type CurrencyType = {
   amount: string;
   result: string;
 };
+
+export type CurrencyFieldType = "from" | "to" | "amount" | "result";

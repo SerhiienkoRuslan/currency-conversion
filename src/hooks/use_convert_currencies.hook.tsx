@@ -1,16 +1,7 @@
 import { ApiClientService, useApiClient } from "../features";
 
 export type ConvertCurrencyResponse = {
-  success: boolean;
-  query: {
-    from: string;
-    to: string;
-    amount: number;
-  };
-  info: {
-    rate: number;
-  };
-  result: number;
+  value: number;
 };
 
 type ConvertInput = {
@@ -35,6 +26,7 @@ export const useConvertCurrencies = () => {
 
     const { data } = await currenciesClient.get("v1/convert", {
       params: { from, to, amount },
+      withCredentials: false,
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },

@@ -4,6 +4,7 @@ import type { SelectChangeEvent } from "@mui/material/Select";
 
 import { SelectorField, NumberField } from "../../../components";
 import { GlobalContext } from "../../../context/global.context";
+import type { CurrencyFieldType } from "../types";
 
 interface Props {
   label: string;
@@ -11,7 +12,7 @@ interface Props {
   selectedValue: string;
   amount: string;
   handleSetConvert: (params: {
-    name: "from" | "to" | "amount";
+    name: CurrencyFieldType;
     value: string;
   }) => void;
 }
@@ -28,7 +29,7 @@ export const CurrencyConverter: React.FC<Props> = ({
   const options = useMemo(() => {
     return isCurrenciesListLoading
       ? []
-      : currenciesList.map((currency) => currency.name);
+      : currenciesList.map((currency) => ({ label: `${currency.short_code} (${currency.name})`, value: currency.short_code }));
   }, [currenciesList, isCurrenciesListLoading]);
 
   const handleCurrencyChange = (event: SelectChangeEvent) => {

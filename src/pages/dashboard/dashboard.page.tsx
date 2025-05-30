@@ -4,10 +4,8 @@ import {
   CurrencyConverter,
   CurrencyActions,
 } from "./components";
-import type { CurrencyType } from "./types";
+import type {  CurrencyType, CurrencyFieldType } from "./types";
 
-// TODO: Add error handling and loading states for better user experience.
-// TODO: validate input values before making the conversion request.
 export const Dashboard: React.FC = () => {
   const [convert, setConvert] = useState<CurrencyType>({
     from: "",
@@ -20,7 +18,7 @@ export const Dashboard: React.FC = () => {
     name,
     value,
   }: {
-    name: "from" | "to" | "amount";
+    name: CurrencyFieldType;
     value: string;
   }) => {
     setConvert((prev) => ({
@@ -45,7 +43,7 @@ export const Dashboard: React.FC = () => {
         amount={convert.result}
         handleSetConvert={handleSetConvert}
       />
-      <CurrencyActions convert={convert} setConvert={setConvert} />
+      <CurrencyActions convert={convert} handleSetConvert={handleSetConvert} />
     </DashboardLayout>
   );
 };

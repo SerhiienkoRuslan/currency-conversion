@@ -3,27 +3,29 @@ import { useMutation } from "@tanstack/react-query";
 import { Button } from "@mui/material";
 
 import { useConvertCurrencies } from "../../../hooks";
-import type { CurrencyType } from "../types";
+import type { CurrencyType, CurrencyFieldType } from "../types";
 
 interface CurrencyActionsProps {
   convert: CurrencyType;
-  setConvert: React.Dispatch<React.SetStateAction<CurrencyType>>;
+  handleSetConvert: (params: {
+    name: CurrencyFieldType;
+    value: string;
+  }) => void;
 }
 
-// TODO: Add error handling and loading states for better user experience.
 export const CurrencyActions = ({
   convert,
-  setConvert,
+  handleSetConvert,
 }: CurrencyActionsProps) => {
   const { convertCurrencies } = useConvertCurrencies();
 
   const { mutate: handleConvertCurrencie, isPending } = useMutation({
     mutationFn: convertCurrencies,
     onSuccess: (data) => {
-      setConvert((prev: CurrencyType) => ({
-        ...prev,
-        result: data.result.toString(),
-      }));
+      handleSetConvert({
+        name: "result",
+        value: `${data.value.toFixed(2)}`,
+      });
     },
   });
 
@@ -39,6 +41,7 @@ export const CurrencyActions = ({
         amount: convert.amount,
       });
     } catch (error) {
+      // TODO: Add error handling and loading states for better user experience.
       console.error("Error converting currencies:", error);
     }
   }, [convert, convertCurrencies]);

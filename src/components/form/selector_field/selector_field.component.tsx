@@ -8,7 +8,7 @@ interface PropsType {
   label: string;
   value: string;
   handleChange: (event: SelectChangeEvent) => void;
-  values: string[] | number[];
+  values: { label: string; value: string }[];
 }
 
 export const SelectorField = ({
@@ -22,8 +22,8 @@ export const SelectorField = ({
 
     <Select value={value} onChange={handleChange} autoWidth label={label}>
       {values.map((currentItem) => (
-        <MenuItem key={currentItem} value={currentItem}>
-          {currentItem}
+        <MenuItem key={currentItem.value} value={currentItem.value}>
+          {currentItem.label}
         </MenuItem>
       ))}
     </Select>
