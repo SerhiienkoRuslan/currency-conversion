@@ -24,8 +24,6 @@ export const GlobalContextProvider = ({
   const { currenciesList, isLoading: isCurrenciesListLoading } =
     useFetchCurrencies();
 
-  console.log("Currencies List!!!:", currenciesList);
-
   const providerValue = {
     currenciesList,
     isCurrenciesListLoading,
